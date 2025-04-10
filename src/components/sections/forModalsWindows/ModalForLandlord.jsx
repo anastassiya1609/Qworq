@@ -11,7 +11,7 @@ export default function ModalForLandlord({ isOpen, onClose }) {
     isSubmitting,
     isSubmitted,
     error,
-  } = useLandlordFormSubmit(onClose); // ❌ убираем formData
+  } = useLandlordFormSubmit(onClose); 
 
   if (!isOpen) return null;
 

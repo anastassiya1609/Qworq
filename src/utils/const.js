@@ -1,0 +1,66 @@
+export const coworkingSpaces = [
+    {
+      id: "1",
+      name: "Коворкинг Space",
+      description:
+        "Современный коворкинг в центре города с удобными рабочими местами.",
+      pricePerHour: "1500 ₸",
+      location: "ул. Примерная, 123",
+      type: "Открытый",
+      image: "https://via.placeholder.com/400x300?text=Coworking+Space+1",
+      amenities: ["Wi-Fi", "Кондиционер", "Кухня"],
+    },
+    {
+      id: "2",
+      name: "Коворкинг Hub",
+      description:
+        "Креативное пространство для работы и встреч с современным дизайном.",
+      pricePerHour: "1200 ₸",
+      location: "пр. Центральный, 45",
+      type: "Закрытый",
+      image: "https://via.placeholder.com/400x300?text=Coworking+Space+2",
+      amenities: ["Wi-Fi", "Переговорные комнаты", "Парковка"],
+    },
+    {
+      id: "3",
+      name: "Коворкинг Work",
+      description: "Уютное пространство для продуктивной работы с тихой зоной.",
+      pricePerHour: "850 ₸",
+      location: "ул. Рабочая, 78",
+      type: "Открытый",
+      image: "https://via.placeholder.com/400x300?text=Coworking+Space+3",
+      amenities: ["Wi-Fi", "Принтер", "Кофе/Чай"],
+    },
+    {
+      id: "4",
+      name: "Коворкинг Office",
+      description:
+        "Профессиональное офисное пространство для команд любого размера.",
+      pricePerHour: "2000 ₸",
+      location: "ул. Деловая, 56",
+      type: "Закрытый",
+      image: "https://via.placeholder.com/400x300?text=Coworking+Space+4",
+      amenities: ["Wi-Fi", "Конференц-зал", "Администратор"],
+    },
+    {
+      id: "5",
+      name: "Коворкинг Creative",
+      description:
+        "Креативное пространство для дизайнеров и творческих профессионалов.",
+      pricePerHour: "1800 ₸",
+      location: "ул. Творческая, 34",
+      type: "Открытый",
+      image: "https://via.placeholder.com/400x300?text=Coworking+Space+5",
+      amenities: ["Wi-Fi", "Печать", "Зона отдыха"],
+    },
+    {
+      id: "6",
+      name: "Коворкинг Tech",
+      description: "Технологический коворкинг для IT-специалистов и стартапов.",
+      pricePerHour: "2200 ₸",
+      location: "ул. Технологическая, 90",
+      type: "Закрытый",
+      image: "https://via.placeholder.com/400x300?text=Coworking+Space+6",
+      amenities: ["Wi-Fi", "Серверная", "Переговорные комнаты"],
+    },
+  ];

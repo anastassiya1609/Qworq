@@ -1,5 +1,6 @@
 import "./index.css"
-import Layout from './components/core/Layout';
+import Layout from './components/core/Layout'
+;
 
 
 

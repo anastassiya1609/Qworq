@@ -20,7 +20,6 @@ const useAuthForm = () => {
       // Тестовый запрос — заменить на реальный endpoint
       // await axiosInstance.post("/auth/login", data);
       console.log("Отправленные данные:", data);
-
       localStorage.setItem("isLoggedIn", "true");
       navigate("/"); //Перевести на мой профиль
     } catch (err) {

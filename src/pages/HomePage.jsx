@@ -1,5 +1,8 @@
 import React from 'react';
 import { Hero } from '../components/sections/forHome/Hero';
+import WhoUs from '../components/sections/forHome/WhoUs';
+import PopularPlaces from '../components/sections/forHome/PopularPlaces';
+import CallForLandlords from '../components/sections/forHome/CallForLandlords';
 
 
 export default function HomePage() {
@@ -8,10 +11,9 @@ export default function HomePage() {
       <div className="min-h-screen bg-gray-50">
     
           <Hero />
-          {/* <SpaceForEveryMoment />
-          <ValueProposition />
-          <PopularSpaces  />
-          <HostCTA /> */}
+          <WhoUs/>
+          <PopularPlaces/>
+          <CallForLandlords/>
     
       </div>
     );
