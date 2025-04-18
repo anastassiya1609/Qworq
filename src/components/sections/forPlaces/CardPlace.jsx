@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Building2 } from "lucide-react";
+import { MapPin} from "lucide-react";
 
 const CardPlace = ({ space }) => {
   return (
