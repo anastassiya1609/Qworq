@@ -4,11 +4,12 @@ import ModalForLandlord from "../sections/forModalsWindows/ModalForLandlord";
 import { MobileMenuButton } from "../sections/forHeader/MobileMenuButton";
 import { DesktopMenu } from "../sections/forHeader/DesktopMenu";
 import { MobileMenuComponent } from "../sections/forHeader/MobileMenuComponent";
+import { useSelector } from "react-redux";
 
 export function Header() {
   const [isModalForLandlordOpen, setIsModalForLandlordOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   const handleHostClick = () => {
     setIsModalForLandlordOpen(true);

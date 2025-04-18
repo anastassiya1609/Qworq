@@ -1,7 +1,14 @@
-import { UserCircle2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { UserCircle2 } from "lucide-react";
+import { Link  } from "react-router-dom";
+import {   useSelector } from "react-redux";
+import { useLogout } from "../../../hooks/useLogout";
 
-export function DesktopMenu({ isLoggedIn, handleHostClick }) {
+export function DesktopMenu({ handleHostClick }) {
+
+  const logout = useLogout();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+
   return (
     <div className="hidden md:flex items-center space-x-6">
       <button
@@ -11,9 +18,20 @@ export function DesktopMenu({ isLoggedIn, handleHostClick }) {
         Разместить помещение
       </button>
       {isLoggedIn ? (
-        <Link to="/profile" className="text-white hover:text-white/80 transition-colors">
-          <UserCircle2 className="w-8 h-8" />  {/*Через редакс надо достать значение залогинен или нет, чтобы иконку менять */}
-        </Link>
+        <>
+          <Link
+            to="/profile"
+            className="text-white hover:text-white/80 transition-colors"
+          >
+            <UserCircle2 className="w-8 h-8" />
+          </Link>
+          <button
+            className="text-white hover:text-white/80 transition-colors"
+            onClick={logout}
+          >
+            Выйти
+          </button>
+        </>
       ) : (
         <Link
           to="/auth"

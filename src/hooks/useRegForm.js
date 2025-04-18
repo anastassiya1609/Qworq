@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-// import { axiosInstance } from "./../../../services/axios";
+import { axiosInstance } from "../services/axios";
+import { useDispatch } from 'react-redux';
+import { login } from '../store/slices/authSlice'; 
+
 
 const useRegForm = () => {
   const navigate = useNavigate();
@@ -13,16 +16,19 @@ const useRegForm = () => {
   } = useForm();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const dispatch = useDispatch();
 
-  const onSubmit = async (data) => {
+
+  const onSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      // Тестовый запрос — заменить на реальный endpoint
-      // await axiosInstance.post("/auth/register", data);
-      console.log("Отправленные данные:", data);
+      const response = await axiosInstance.post('api/auth/register', formData);
+      const token = response.data.token;
+      const user = response.data.user;
+      console.log("Ответ сервера:", response);
 
-      localStorage.setItem("isLoggedIn", "true");
-      navigate("/"); //Перевести на мой профиль
+      dispatch(login({ user, token }));
+      navigate("/profile"); 
     } catch (err) {
       setError("server", {
         message:
@@ -35,7 +41,7 @@ const useRegForm = () => {
 
   return {
     control,
-    handleSubmit,
+    handleSubmit: handleSubmit(onSubmit),
     errors,
     onSubmit,
     isSubmitting,

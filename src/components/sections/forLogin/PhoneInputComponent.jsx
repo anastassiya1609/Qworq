@@ -9,7 +9,7 @@ const PhoneInputComponent = ({ control, errors }) => (
     </label>
     <Controller
       name="phone"
-      control={control}
+      control={control} // Получаем control из родителя
       defaultValue=""
       rules={{
         required: "Номер телефона обязателен",
@@ -25,10 +25,11 @@ const PhoneInputComponent = ({ control, errors }) => (
         />
       )}
     />
-    {errors.phone && (
+    {errors?.phone && ( // Используем optional chaining для безопасного доступа к errors.phone
       <p className="text-red-500 text-xs">{errors.phone.message}</p>
     )}
   </div>
 );
 
 export default PhoneInputComponent;
+

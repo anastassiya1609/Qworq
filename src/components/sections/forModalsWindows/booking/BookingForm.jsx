@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar, Clock, Mail, MessageSquare } from "lucide-react";
+import { Calendar, Mail, MessageSquare } from "lucide-react";
 import NameInputComponent from "../../forLogin/NameInputComponent";
 import PhoneInputComponent from "../../forLogin/PhoneInputComponent";
 
@@ -37,44 +37,37 @@ const BookingForm = ({ control, errors, handleSubmit, onSubmit }) => {
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center">
           <Calendar size={16} className="mr-1" />
-          Дата
+          Начало бронирования
         </label>
         <input
           type="date"
           className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
             errors.date ? "border-red-500" : ""
           }`}
-          {...control.register("date", { required: "Дата обязательна" })}
+          {...control.register("startDate", { required: "Дата обязательна" })}
         />
-        {errors.date && (
-          <p className="text-red-500 text-xs mt-1">{errors.date.message}</p>
+        {errors.startDate && (
+          <p className="text-red-500 text-xs mt-1">{errors.startDate.message}</p>
+        )}
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center">
+          <Calendar size={16} className="mr-1" />
+          Конец бронирования
+        </label>
+        <input
+          type="date"
+          className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
+            errors.date ? "border-red-500" : ""
+          }`}
+          {...control.register("endDate", { required: "Дата обязательна" })}
+        />
+        {errors.endDate && (
+          <p className="text-red-500 text-xs mt-1">{errors.endDate.message}</p>
         )}
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center">
-          <Clock size={16} className="mr-1" />
-          Длительность
-        </label>
-        <select
-          className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
-            errors.duration ? "border-red-500" : ""
-          }`}
-          {...control.register("duration", { required: "Выберите длительность" })}
-        >
-          <option value="">Выберите длительность</option>
-          <option value="1">1 час</option>
-          <option value="2">2 часа</option>
-          <option value="4">4 часа</option>
-          <option value="8">8 часов</option>
-          <option value="24">1 день</option>
-        </select>
-        {errors.duration && (
-          <p className="text-red-500 text-xs mt-1">
-            {errors.duration.message}
-          </p>
-        )}
-      </div>
+
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center">

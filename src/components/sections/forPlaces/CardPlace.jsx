@@ -21,10 +21,7 @@ const CardPlace = ({ space }) => {
           {space.location}
         </div>
 
-        <div className="flex items-center text-sm text-gray-500 mb-4">
-          <Building2 className="h-4 w-4 mr-1" />
-          Тип: {space.type}
-        </div>
+         
 
         <div className="flex flex-wrap gap-2 mb-4">
           {space.amenities.map((amenity, index) => (
@@ -38,9 +35,11 @@ const CardPlace = ({ space }) => {
         </div>
 
         <div className="flex justify-between items-center">
-          <span className="text-blue-600 font-medium">
-            от {space.pricePerHour}/час
-          </span>
+        
+          <div className="text-blue-600 font-medium">
+            от {space.pricePerDay}тг/день
+          </div>
+       
           <Link
             to={`/coworking/${space.id}`}
             className="bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition-colors"

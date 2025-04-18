@@ -1,12 +1,17 @@
 import "./index.css"
 import Layout from './components/core/Layout'
 ;
+import { Toaster } from 'react-hot-toast';
 
 
 
 function App() {
   return (
-    <Layout/>
+    <>
+      <Toaster position="top-right" />
+      <Layout/>
+    </>
+
   );
 }
 

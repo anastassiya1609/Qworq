@@ -5,8 +5,7 @@ import AuthFormFields from "./AuthFormFields";
 import SubmitButton from "./SubmitButton";
 
 const AuthForm = () => {
-  const { control, handleSubmit, errors, onSubmit, isSubmitting } =
-    useAuthForm();
+  const { control, handleSubmit, errors, isSubmitting } = useAuthForm();
 
   return (
     <AuthFormContainer
@@ -16,7 +15,7 @@ const AuthForm = () => {
       linkLabel="Нет аккаунта?"
       errors={errors}
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <AuthFormFields control={control} errors={errors} showNameField={false} />
         <SubmitButton 
           isSubmitting={isSubmitting} 

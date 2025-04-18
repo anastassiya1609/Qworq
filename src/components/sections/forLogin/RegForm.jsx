@@ -5,7 +5,7 @@ import AuthFormFields from "./AuthFormFields";
 import SubmitButton from "./SubmitButton";
 
 const RegForm = () => {
-  const { control, handleSubmit, errors, onSubmit, isSubmitting } =
+  const { control, handleSubmit, errors, isSubmitting } =
     useRegForm();
 
   return (
@@ -16,7 +16,7 @@ const RegForm = () => {
       linkLabel="Уже есть аккаунт?"
       errors={errors}
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <AuthFormFields control={control} errors={errors} showNameField={true} />
         <SubmitButton 
           isSubmitting={isSubmitting} 

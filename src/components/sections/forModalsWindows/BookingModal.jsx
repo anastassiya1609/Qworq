@@ -4,8 +4,10 @@ import { X } from "lucide-react";
 import BookingModalHeader from "./booking/BookingModalHeader";
 import BookingModalInfo from "./booking/BookingModalInfo";
 import BookingForm from "./booking/BookingForm";
+import { useParams } from "react-router-dom";
 
 const BookingModal = ({ coworkingName, onClose, onConfirm }) => {
+  const { id: coworkingId } = useParams();
   const {
     control,
     handleSubmit,
@@ -13,7 +15,11 @@ const BookingModal = ({ coworkingName, onClose, onConfirm }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    onConfirm(data);
+    const fullData = {
+      ...data,
+      coworkingId, // добавляем ID в данные формы
+    };
+    onConfirm(fullData);
   };
 
   return (
@@ -29,15 +35,15 @@ const BookingModal = ({ coworkingName, onClose, onConfirm }) => {
 
         <BookingModalHeader coworkingName={coworkingName} />
         <BookingModalInfo />
-        <BookingForm 
-          control={control} 
-          errors={errors} 
-          handleSubmit={handleSubmit} 
-          onSubmit={onSubmit} 
+        <BookingForm
+          control={control}
+          errors={errors}
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
         />
       </div>
     </div>
   );
 };
 
-export default BookingModal; 
+export default BookingModal;

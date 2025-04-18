@@ -1,72 +1,76 @@
 import { createSlice } from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 
-const initialState = {
-  isLoggedIn: false,
-  user: null,
-  token: null,
-  loading: false,
-  error: null
+// Загрузка начального состояния из cookies
+const loadState = () => {
+  try {
+    const userData = Cookies.get('userData');
+    const token = Cookies.get('token');
+    
+    if (!userData || !token) {
+      return {
+        isLoggedIn: false,
+        user: null,
+        token: null,
+      };
+    }
+    
+    return {
+      isLoggedIn: true,
+      user: JSON.parse(userData),
+      token: token,
+    };
+  } catch (err) {
+    console.error('Error loading auth state from cookies:', err);
+    return {
+      isLoggedIn: false,
+      user: null,
+      token: null,
+    };
+  }
 };
+
+const initialState = loadState();
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // Отправка запроса
-    loginStart: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-    // Успешный ответ
-    loginSuccess: (state, action) => {
+    login(state, action) {
       state.isLoggedIn = true;
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.loading = false;
-      state.error = null;
+      
+      // Сохраняем состояние в cookies
+      try {
+        // Устанавливаем cookie на 7 дней
+        Cookies.set('userData', JSON.stringify(action.payload.user), { expires: 7 });
+        Cookies.set('token', action.payload.token, { expires: 7 });
+      } catch (err) {
+        console.error('Error saving auth state to cookies:', err);
+      }
     },
-    // Ошибка
-    loginFailure: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    // Регистрация 
-    // Отправка запроса
-    registerStart: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-    // Успешный ответ
-    registerSuccess: (state, action) => {
-      state.isLoggedIn = true;
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.loading = false;
-      state.error = null;
-    },
-    // Ошибка
-    registerFailure: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    // Выход из аккаунта
-    logout: (state) => {
+    logout(state) {
       state.isLoggedIn = false;
       state.user = null;
       state.token = null;
-      state.error = null;
+      
+      // Очищаем cookies
+      Cookies.remove('userData');
+      Cookies.remove('token');
     },
-    // Очистка ошибки
-    clearError: (state) => {
-      state.error = null;
-    }
-  }
+    updateUser(state, action) {
+      state.user = { ...state.user, ...action.payload };
+      
+      // Обновляем состояние в cookies
+      try {
+        Cookies.set('userData', JSON.stringify({ ...state.user, ...action.payload }), { expires: 7 });
+      } catch (err) {
+        console.error('Error updating auth state in cookies:', err);
+      }
+    },
+  },
 });
 
-export const { 
-  loginStart, loginSuccess, loginFailure, 
-  registerStart, registerSuccess, registerFailure, 
-  logout, clearError 
-} = authSlice.actions;
-
+export const { login, logout, updateUser } = authSlice.actions;
 export default authSlice.reducer;
