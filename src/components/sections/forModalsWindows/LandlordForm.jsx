@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm} from "react-hook-form";
-import PhoneInputComponent from "../forLogin/PhoneInputComponent"; // Убедитесь, что компонент работает правильно
+import PhoneInputComponent from "../forLogin/PhoneInputComponent";
 import NameInputComponent from "../forLogin/NameInputComponent";
 
 export default function LandlordForm({ handleSubmit, isSubmitting }) {

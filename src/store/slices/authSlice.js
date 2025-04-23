@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
 
-// Загрузка начального состояния из cookies
 const loadState = () => {
   try {
     const userData = Cookies.get('userData');
@@ -41,9 +40,8 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       
-      // Сохраняем состояние в cookies
       try {
-        // Устанавливаем cookie на 7 дней
+       
         Cookies.set('userData', JSON.stringify(action.payload.user), { expires: 7 });
         Cookies.set('token', action.payload.token, { expires: 7 });
       } catch (err) {
@@ -55,14 +53,14 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
       
-      // Очищаем cookies
+
       Cookies.remove('userData');
       Cookies.remove('token');
     },
     updateUser(state, action) {
       state.user = { ...state.user, ...action.payload };
       
-      // Обновляем состояние в cookies
+
       try {
         Cookies.set('userData', JSON.stringify({ ...state.user, ...action.payload }), { expires: 7 });
       } catch (err) {

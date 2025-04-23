@@ -15,7 +15,6 @@ const BookingHistoryTab = () => {
         booking.id === id ? { ...booking, rating: newRating } : booking
       )
     );
-    // Здесь можно также отправить запрос на сервер для обновления рейтинга
   };
 
   return (

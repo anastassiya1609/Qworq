@@ -11,17 +11,14 @@ export default function PhoneInput({
   name
 }) {
 
-  // Обработчик для изменения значения
   const handleChange = (e) => {
     const input = e.target.value;
     const numbers = input.replace(/\D/g, "");
-    onChange(numbers.slice(0, 11)); // Отправляем только 11 цифр
+    onChange(numbers.slice(0, 11)); 
   };
 
-  // Форматирование телефона
   const formattedValue = formatPhoneNumber(value);
 
-  // Синхронизация значения с React Hook Form при изменении
   useEffect(() => {
     if (register && name) {
       register(name, { required });

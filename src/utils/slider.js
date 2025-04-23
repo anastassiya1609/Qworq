@@ -18,4 +18,3 @@ export function useSlider(arr) {
   return {currentSlide, setCurrentSlide};
 }
 
-// State to track the current slide index}

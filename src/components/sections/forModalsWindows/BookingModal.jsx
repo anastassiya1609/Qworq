@@ -17,7 +17,7 @@ const BookingModal = ({ coworkingName, onClose, onConfirm }) => {
   const onSubmit = (data) => {
     const fullData = {
       ...data,
-      coworkingId, // добавляем ID в данные формы
+      coworkingId,
     };
     onConfirm(fullData);
   };

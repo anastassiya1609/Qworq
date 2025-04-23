@@ -1,7 +1,6 @@
 import axios from "axios";
 import Cookies from 'js-cookie';
 
-// Создаем экземпляр axios с базовым URL
 export const axiosInstance = axios.create({
     baseURL: "https://backend-project-gt8h.onrender.com",
     headers: {

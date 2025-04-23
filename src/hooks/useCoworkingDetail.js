@@ -6,7 +6,7 @@ export const useCoworkingDetail = (id) => {
     const [loading, setLoading] = useState(true);
   
     useEffect(() => {
-      if (!id) return; // Без id ничего не делаем
+      if (!id) return; 
   
       const fetchCoworking = async () => {
         try {
